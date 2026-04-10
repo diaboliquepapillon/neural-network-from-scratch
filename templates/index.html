@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neural Network From Scratch - Digit Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Neural Network From Scratch</h1>
+      <p class="subtitle">Draw a digit (0-9) and run NumPy inference.</p>
+
+      {% if model_error %}
+      <div class="error-box">
+        <strong>Model unavailable:</strong> {{ model_error }}
+      </div>
+      {% endif %}
+
+      <section class="panel">
+        <canvas id="draw-canvas" width="280" height="280"></canvas>
+        <div class="actions">
+          <button id="clear-btn">Clear</button>
+          <button id="predict-btn" {% if model_error %}disabled{% endif %}>Predict</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Prediction</h2>
+        <p id="prediction">Draw something and click Predict.</p>
+        <ul id="top3"></ul>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+  </html>
