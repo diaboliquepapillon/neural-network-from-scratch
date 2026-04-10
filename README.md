@@ -45,6 +45,7 @@ This project manually implements:
 ```text
 neural-network-from-scratch/
 ├── README.md
+├── netlify.toml
 ├── requirements.txt
 ├── data_loader.py
 ├── activations.py
@@ -53,7 +54,13 @@ neural-network-from-scratch/
 ├── utils.py
 ├── visualize.py
 ├── train.py
+├── export_weights.py
 ├── webapp.py
+├── site/
+│   ├── index.html
+│   ├── style.css
+│   ├── app.js
+│   └── weights.json
 ├── templates/
 │   └── index.html
 └── static/
@@ -196,6 +203,7 @@ Disable plots (useful on servers):
 
 ```bash
 python train.py --no-visuals
+```
 
 Train first to produce `weights.npz` used by the website:
 
@@ -218,7 +226,26 @@ Then open:
 `http://127.0.0.1:5000`
 
 You can draw a digit on the canvas and click **Predict**.
+
+---
+
+## Deploy to Netlify
+
+This repository includes a static Netlify-ready site in `site/` that runs
+the neural network forward pass in the browser using exported weights.
+
+1. Export browser weights (after training):
+
+```bash
+python export_weights.py
 ```
+
+2. Deploy:
+   - Connect this repo in Netlify, or run `netlify deploy --prod --dir=site`
+   - `netlify.toml` is already configured with:
+     - publish directory: `site`
+
+The hosted page does not require Flask and works as static hosting.
 
 ---
 

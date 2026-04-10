@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neural Network From Scratch - Netlify Demo</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Neural Network From Scratch</h1>
+      <p class="subtitle">Netlify-ready digit classifier (in-browser inference).</p>
+
+      <section class="panel">
+        <canvas id="draw-canvas" width="280" height="280"></canvas>
+        <div class="actions">
+          <button id="clear-btn">Clear</button>
+          <button id="predict-btn">Predict</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Prediction</h2>
+        <p id="prediction">Loading weights...</p>
+        <ul id="top3"></ul>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+  </html>
